@@ -1,7 +1,7 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 const APP_CONFIG = {
-    debugMode: true,
+    debugMode: false,
     defaultLanguage: 'en',
     storageKey: 'dashengAudioGenAnnotations.v2',
     selectionManifestPath: './data/selected_cases.json'

@@ -1,0 +1,38 @@
+# macOS 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 缓存文件
+*.log
+*.tmp
+*.swp
+
+# VSCode / 编辑器配置
+.vscode/
+.idea/
+.claude/
+
+# Node.js 依赖
+node_modules/
+
+# Python 依赖与缓存
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.env
+
+# 构建/输出目录
+dist/
+build/
+out/
+
+# Git 文件忽略
+*.orig
+
+# OS 其他
+ehthumbs.db
+Thumbs.db

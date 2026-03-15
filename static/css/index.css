@@ -595,6 +595,14 @@ body.display-mode .audio-row {
       "audio";
   }
 
+  body.display-mode .audio-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "short"
+      "structured"
+      "audio";
+  }
+
   body.debug-mode .audio-row {
     grid-template-columns: 42px 1fr;
     grid-template-areas:
@@ -605,6 +613,22 @@ body.display-mode .audio-row {
 }
 
 @media (max-width: 640px) {
+  .module-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .module-tabs ul {
+    width: max-content;
+    min-width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .module-tab-btn {
+    white-space: nowrap;
+  }
+
   .hero-demo-link-wrap {
     margin-top: -0.25rem;
   }
@@ -841,7 +865,8 @@ code {
     margin-bottom: 0.5rem;
   }
   
-  .button {
+  .link-block .button,
+  .hero-demo-link {
     width: 100%;
     justify-content: center;
   }

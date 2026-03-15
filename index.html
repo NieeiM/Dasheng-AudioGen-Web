@@ -176,14 +176,23 @@
   </button>
 
   <main id="main-content">
-    <section class="hero">
+    <section class="hero top-hero">
       <div class="hero-body">
         <div class="container is-max-desktop has-text-centered">
           <h1 class="title is-2 publication-title">Dasheng AudioGen</h1>
+          <div class="hero-demo-link-wrap">
+            <a
+              class="button is-dark hero-demo-link"
+              href="https://huggingface.co/spaces/mispeech/Dasheng-Mix-Audiogen"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try Hugging Face Demo
+            </a>
+          </div>
           <p class="subtitle is-5 app-intro">
-            producing a complete audio clip with music, intelligible speech, and sound effects in one pass.
+            Producing a complete audio clip with music, intelligible speech, and sound effects in one pass.
           </p>
-          <div id="mode-banner" class="mode-banner" aria-live="polite"></div>
           <div id="selection-tools" class="selection-tools is-hidden">
             <button id="export-selection-btn" class="button is-small is-link">Export selected_cases.json</button>
             <button id="reset-selection-btn" class="button is-small is-light">Reset local selection</button>
@@ -193,11 +202,13 @@
       </div>
     </section>
 
-    <section class="section hero is-light">
+    <section class="section hero is-light video-demo-section">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Video Demo</h2>
         <div class="video-placeholder">
-          <div class="video-placeholder-inner">Video placeholder</div>
+          <video class="demo-video" controls preload="metadata" playsinline>
+            <source src="data/dasheng-audiogen-demo-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </section>

@@ -185,13 +185,12 @@ function getVisibleItems(category) {
 
 function updateModeBanner() {
     const banner = document.getElementById('mode-banner');
-    if (!banner) return;
     document.body.classList.toggle('debug-mode', APP_STATE.debugMode);
     document.body.classList.toggle('display-mode', !APP_STATE.debugMode);
-    banner.classList.remove('is-hidden');
-    banner.textContent = APP_STATE.debugMode
-        ? 'Debug mode enabled: checkbox + drag sorting are active. Final page shows checked items only.'
-        : 'Display mode enabled: only selected items from debug mode are shown.';
+    if (banner) {
+        banner.classList.add('is-hidden');
+        banner.textContent = '';
+    }
 
     const tools = document.getElementById('selection-tools');
     if (tools) {

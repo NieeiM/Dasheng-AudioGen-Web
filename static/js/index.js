@@ -524,6 +524,6 @@ async function bootstrap() {
     }
 }
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
     bootstrap();
 });

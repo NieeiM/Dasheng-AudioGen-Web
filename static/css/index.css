@@ -131,6 +131,16 @@ body {
     line-height: 1.1 !important;
 }
 
+.publication-affiliations {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: -0.8rem auto 1.5rem;
+}
+
 .publication-banner {
   max-height: 70vh;
   border-radius: var(--border-radius-lg);
@@ -829,6 +839,11 @@ code {
     line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
   }
+
+  .publication-affiliations {
+    font-size: 0.92rem;
+    margin: -0.4rem auto 1.25rem;
+  }
   
   .publication-authors {
     font-size: 1rem !important;
@@ -858,6 +873,11 @@ code {
 @media screen and (max-width: 480px) {
   .publication-title {
     font-size: 2rem !important;
+  }
+
+  .publication-affiliations {
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
   }
   
   .hero-body {

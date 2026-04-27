@@ -141,6 +141,14 @@ body {
   margin: -0.8rem auto 1.5rem;
 }
 
+.publication-authors-inline {
+  max-width: 960px;
+  margin: -0.6rem auto 0.8rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
 .publication-banner {
   max-height: 70vh;
   border-radius: var(--border-radius-lg);
@@ -342,6 +350,163 @@ body {
   color: var(--text-secondary);
   max-width: 760px;
   margin: 0 auto;
+}
+
+.paper-overview-section {
+  padding-top: 2rem;
+}
+
+.section-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.section-heading {
+  margin: 0 auto 2rem;
+  max-width: 760px;
+}
+
+.section-copy {
+  margin: -0.8rem auto 0;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.paper-summary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-panel {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.abstract-panel,
+.highlight-panel {
+  padding: 1.5rem;
+}
+
+.abstract-panel {
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.1), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.abstract-copy {
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.highlight-panel {
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 36%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.highlight-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.highlight-list li + li {
+  margin-top: 0.9rem;
+}
+
+.architecture-panel {
+  padding: 1.5rem;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(14, 165, 233, 0.02)),
+    #ffffff;
+}
+
+.architecture-copy {
+  max-width: 860px;
+}
+
+.overview-lead {
+  margin: -0.6rem 0 0;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+.token-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.figure-shell {
+  margin-top: 1.25rem;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.95));
+  box-shadow: var(--shadow-sm);
+}
+
+.architecture-figure-link {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+}
+
+.architecture-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: var(--transition);
+}
+
+.architecture-figure-link:hover .architecture-image {
+  transform: scale(1.01);
+}
+
+.figure-caption {
+  margin: 1rem 0 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.overview-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.overview-detail {
+  padding: 1rem 1.1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.overview-detail h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.overview-detail p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 .hero-demo-link-wrap {
@@ -602,6 +767,11 @@ body.display-mode .audio-row {
 }
 
 @media (max-width: 1180px) {
+  .paper-summary-grid,
+  .overview-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
   .audio-row {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -844,6 +1014,11 @@ code {
     font-size: 0.92rem;
     margin: -0.4rem auto 1.25rem;
   }
+
+  .publication-authors-inline {
+    font-size: 0.92rem;
+    margin-bottom: 0.7rem;
+  }
   
   .publication-authors {
     font-size: 1rem !important;
@@ -854,8 +1029,13 @@ code {
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
   }
-  
-  
+
+  .abstract-panel,
+  .highlight-panel,
+  .architecture-panel {
+    padding: 1.2rem;
+  }
+
   .results-carousel .item {
     margin: 0.5rem;
     padding: 1rem;
@@ -1017,6 +1197,4 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
-
 

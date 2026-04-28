@@ -105,7 +105,7 @@
     "url": "https://nieeim.github.io/Dasheng-AudioGen-Web/",
     "image": "https://nieeim.github.io/Dasheng-AudioGen-Web/static/images/arch.png",
     "keywords": ["audio generation", "audio scene generation", "text-to-audio", "text-to-speech", "text-to-music", "flow matching"],
-    "abstract": "Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks.",
+    "abstract": "Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks. Demos and model checkpoints are available at https://nieeim.github.io/Dasheng-AudioGen-Web/",
     "isAccessibleForFree": true,
     "mainEntity": {
       "@type": "WebPage",
@@ -191,16 +191,17 @@
           <article class="info-panel abstract-panel">
             <p class="section-kicker">Abstract</p>
             <p class="abstract-copy">
-              Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks.
+              Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks. Demos and model checkpoints are available at <a href="https://nieeim.github.io/Dasheng-AudioGen-Web/" target="_blank" rel="noopener noreferrer">this project page</a>.
             </p>
           </article>
 
           <article class="info-panel highlight-panel">
             <p class="section-kicker">Contributions</p>
             <ul class="highlight-list">
-              <li><strong>Unified audio scene generation.</strong> A single architecture jointly synthesizes intelligible speech, music, sound effects, and environmental acoustics in one coherent scene.</li>
-              <li><strong>Structured multi-view captions.</strong> Dedicated tags decouple the global scene, speaker style, transcript, music, sound events, and environment for fine-grained control.</li>
-              <li><strong>Semantic-acoustic latent generation.</strong> Flow matching operates directly in DashengTokenizer space, preserving both semantic priors and acoustic detail for mixed-source generation.</li>
+              <li><strong>Dasheng AudioGen.</strong> A unified framework for general audio generation that synthesizes speech, music, sound effects, and environmental acoustics within a single coherent audio scene.</li>
+              <li><strong>Structured multi-view captions.</strong> Complex audio scenes are decomposed into global descriptions, speaker style, speech transcripts, sound events, music, and acoustic environments for fine-grained and controllable generation.</li>
+              <li><strong>Semantic-acoustic latent generation.</strong> Dasheng AudioGen operates on high-dimensional DashengTokenizer representations rather than low-dimensional acoustic VAEs, preserving semantic priors and acoustic details for overlapping sources.</li>
+              <li><strong>Comprehensive evaluation pipeline.</strong> The system is evaluated across standard benchmarks, MECAT single-type and mixed-type scenes, human evaluation, and PAFI, showing strong performance in complex mixed scenes.</li>
             </ul>
           </article>
         </div>
@@ -210,7 +211,7 @@
             <p class="section-kicker">Overview</p>
             <h2 class="title is-3">Structured Multi-View Captioning and Agentic Generation</h2>
             <p class="overview-lead">
-              Dasheng AudioGen replaces one coarse prompt with a structured caption that describes complementary views of the same scene. An agentic prompt refiner can expand a simple textual description into these fields automatically, making the model both controllable and easy to integrate into higher-level generation workflows.
+              Real-world audio scenes rarely contain only one sound type. Instead, they combine speech, music, sound effects, and environmental acoustics that need to remain temporally and perceptually coherent. Dasheng AudioGen addresses this with structured conditioning and a unified semantic-acoustic generation space rather than separate modules for each domain.
             </p>
             <div class="token-chip-row" aria-label="Structured caption fields">
               <span class="caption-token token-caption">&lt;|caption|&gt;</span>
@@ -244,12 +245,16 @@
 
           <div class="overview-detail-grid">
             <div class="overview-detail">
-              <h3>Fine-grained conditioning</h3>
-              <p>Each field controls one part of the target scene, which lets the model separately steer speech content, speaker style, sound events, music, and ambient acoustics instead of relying on a single global caption.</p>
+              <h3>Data and conditioning</h3>
+              <p>A single coarse caption is not enough for controllable mixed-audio generation. Multi-view captions provide complementary textual supervision over speech content, speaker style, music, sound events, and acoustic environment.</p>
             </div>
             <div class="overview-detail">
-              <h3>Unified semantic-acoustic generation</h3>
-              <p>The structured caption is encoded by T5 and conditions a flow-matching DiT that predicts high-dimensional DashengTokenizer latents, providing enough capacity to disentangle and fuse concurrent audio components.</p>
+              <h3>Representation and generation</h3>
+              <p>The structured caption is encoded by T5 and conditions a flow-matching DiT that predicts high-dimensional DashengTokenizer latents, providing sufficient capacity to disentangle and fuse heterogeneous concurrent audio components.</p>
+            </div>
+            <div class="overview-detail">
+              <h3>Agentic prompt refinement</h3>
+              <p>An agentic prompt refiner can expand a simple scene description into structured fields automatically, making the system controllable while remaining easy to integrate into higher-level generation workflows.</p>
             </div>
           </div>
         </article>

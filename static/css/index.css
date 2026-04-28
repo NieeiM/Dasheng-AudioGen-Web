@@ -136,9 +136,15 @@ body {
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: var(--text-secondary);
   margin: -0.8rem auto 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.publication-affiliations span {
+  display: block;
 }
 
 .publication-authors-inline {

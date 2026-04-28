@@ -149,6 +149,18 @@ body {
   color: var(--text-primary);
 }
 
+.publication-status-note {
+  max-width: 840px;
+  margin: -0.7rem auto 0.95rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #1e3a8a;
+  background: rgba(219, 234, 254, 0.72);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--border-radius);
+}
+
 .publication-banner {
   max-height: 70vh;
   border-radius: var(--border-radius-lg);
@@ -983,6 +995,12 @@ code {
   .publication-authors-inline {
     font-size: 0.92rem;
     margin-bottom: 0.7rem;
+  }
+
+  .publication-status-note {
+    font-size: 0.92rem;
+    margin: -0.35rem auto 0.85rem;
+    padding: 0.7rem 0.85rem;
   }
   
   .publication-authors {

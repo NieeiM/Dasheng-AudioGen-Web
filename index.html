@@ -209,10 +209,6 @@
         <article class="info-panel architecture-panel">
           <div class="architecture-copy">
             <p class="section-kicker">Overview</p>
-            <h2 class="title is-3">Structured Multi-View Captioning and Agentic Generation</h2>
-            <p class="overview-lead">
-              Real-world audio scenes rarely contain only one sound type. Instead, they combine speech, music, sound effects, and environmental acoustics that need to remain temporally and perceptually coherent. Dasheng AudioGen addresses this with structured conditioning and a unified semantic-acoustic generation space rather than separate modules for each domain.
-            </p>
             <div class="token-chip-row" aria-label="Structured caption fields">
               <span class="caption-token token-caption">&lt;|caption|&gt;</span>
               <span class="caption-token token-speech">&lt;|speech|&gt;</span>
@@ -242,21 +238,6 @@
           <p class="figure-caption">
             Structured multi-view audio scene captioning and agentic generation pipeline. Special tokens such as <code>&lt;|music|&gt;</code> describe different components of the target audio scene, while an agentic prompt refiner converts a simple scene description into a structured caption for fine-grained control.
           </p>
-
-          <div class="overview-detail-grid">
-            <div class="overview-detail">
-              <h3>Data and conditioning</h3>
-              <p>A single coarse caption is not enough for controllable mixed-audio generation. Multi-view captions provide complementary textual supervision over speech content, speaker style, music, sound events, and acoustic environment.</p>
-            </div>
-            <div class="overview-detail">
-              <h3>Representation and generation</h3>
-              <p>The structured caption is encoded by T5 and conditions a flow-matching DiT that predicts high-dimensional DashengTokenizer latents, providing sufficient capacity to disentangle and fuse heterogeneous concurrent audio components.</p>
-            </div>
-            <div class="overview-detail">
-              <h3>Agentic prompt refinement</h3>
-              <p>An agentic prompt refiner can expand a simple scene description into structured fields automatically, making the system controllable while remaining easy to integrate into higher-level generation workflows.</p>
-            </div>
-          </div>
         </article>
       </div>
     </section>

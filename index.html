@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="title" content="Dasheng AudioGen: A Unified Model for Generating Coherent Audio Scenes from Text">
-  <meta name="description" content="Dasheng AudioGen generates coherent mixed-audio scenes from text using structured multi-view captions and a unified semantic-acoustic flow-matching model.">
+  <meta name="description" content="Dasheng AudioGen generates coherent mixed-audio scenes from text using structured multi-view captions and a unified semantic-acoustic representation with flow-matching DiT.">
   <meta name="keywords" content="audio generation, audio scene generation, text-to-audio, text-to-speech, text-to-music, sound effect generation, flow matching">
   <meta name="author" content="Jiahao Mei, Heinrich Dinkel, Yadong Niu, Xingwei Sun, Gang Li, Yifan Liao, Jiahao Zhou, Junbo Zhang, Jian Luan, Mengyue Wu">
   <meta name="robots" content="index, follow">
@@ -101,7 +101,7 @@
     "url": "https://nieeim.github.io/Dasheng-AudioGen-Web/",
     "image": "https://nieeim.github.io/Dasheng-AudioGen-Web/static/images/arch.png",
     "keywords": ["audio generation", "audio scene generation", "text-to-audio", "text-to-speech", "text-to-music", "flow matching"],
-    "abstract": "Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks. Demos and model checkpoints are available at https://nieeim.github.io/Dasheng-AudioGen-Web/",
+    "abstract": "Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. The key obstacles are insufficient fine-grained supervision for real-world mixed audio and limited acoustic representations for modeling concurrent audio components. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into complementary description views, thereby enabling fine-grained control over audio layers. Furthermore, we employ a high-dimensional unified semantic-acoustic representation as the shared latent space. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. With these designs, a simple flow-matching DiT achieves high-quality end-to-end audio scene generation. We also establish a comprehensive evaluation pipeline for audio scene generation. Experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized models in single-type generation tasks.",
     "isAccessibleForFree": true,
     "mainEntity": {
       "@type": "WebPage",
@@ -129,10 +129,18 @@
       <div class="hero-body">
         <div class="container is-max-desktop has-text-centered">
           <h1 class="title is-2 publication-title">Dasheng AudioGen: A Unified Model for Generating Coherent Audio Scenes from Text</h1>
-          <p class="publication-status-note">The Hugging Face demo and OpenClaw skill are currently available. The code is under open-source review and will be released soon.</p>
           <p class="publication-authors-inline">Jiahao Mei<sup>1,2</sup>, Heinrich Dinkel<sup>2</sup>, Yadong Niu<sup>2</sup>, Xingwei Sun<sup>2</sup>, Gang Li<sup>2</sup>, Yifan Liao<sup>2</sup>, Jiahao Zhou<sup>2</sup>, Junbo Zhang<sup>2</sup>, Jian Luan<sup>2</sup>, Mengyue Wu<sup>1</sup></p>
           <p class="publication-affiliations"><span><sup>1</sup> X-LANCE Lab, Shanghai Jiao Tong University, Shanghai, China</span><span><sup>2</sup> MiLM Plus, Xiaomi Inc., Beijing, China</span></p>
           <div class="hero-demo-link-wrap">
+            <a
+              class="button is-dark hero-demo-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
             <a
               class="button is-dark hero-demo-link"
               href="https://clawhub.ai/jimbozhang/midasheng-audio-generate"
@@ -151,7 +159,7 @@
             </a>
             <a
               class="button is-dark hero-demo-link"
-              href="https://github.com/NieeiM/Dasheng-Audiogen"
+              href="https://github.com/xiaomi-research/dasheng-audiogen"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -188,7 +196,7 @@
           <article class="info-panel abstract-panel">
             <p class="section-kicker">Abstract</p>
             <p class="abstract-copy">
-              Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into individual descriptions for speech content, speaker style, sound effects, and music, thereby enabling fine-grained control over audio generation. Furthermore, we employ a high-dimensional unified semantic-acoustic representation (DashengTokenizer) as the shared latent space for flow matching. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. Extensive subjective and objective experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized expert models in single-type generation tasks. Demos and model checkpoints are available at <a href="https://nieeim.github.io/Dasheng-AudioGen-Web/" target="_blank" rel="noopener noreferrer">this project page</a>.
+              Audio generation has long been fragmented, with speech, music, and sound effects produced by domain-specific models that fail to jointly generate coherent audio scenes from a single description. The key obstacles are insufficient fine-grained supervision for real-world mixed audio and limited acoustic representations for modeling concurrent audio components. We present Dasheng AudioGen, a unified framework for generating general mixed-audio scenes from text. Dasheng AudioGen introduces structured multi-view captions, which explicitly decouple complex acoustic scenes into complementary description views, thereby enabling fine-grained control over audio layers. Furthermore, we employ a high-dimensional unified semantic-acoustic representation as the shared latent space. It injects semantic priors that facilitate cross-modal training convergence, while its high-dimensional feature space provides sufficient capacity to disentangle and fuse concurrent audio components effectively. With these designs, a simple flow-matching DiT achieves high-quality end-to-end audio scene generation. We also establish a comprehensive evaluation pipeline for audio scene generation. Experiments demonstrate that Dasheng AudioGen achieves performance approaching real-world recordings in mixed-audio categories, while remaining competitive with specialized models in single-type generation tasks.
             </p>
           </article>
 
@@ -255,10 +263,11 @@
             <li><button class="module-tab-btn" data-category="speech" type="button">Clean Speech</button></li>
             <li><button class="module-tab-btn" data-category="music" type="button">Music</button></li>
             <li><button class="module-tab-btn" data-category="sound" type="button">Sound Effect</button></li>
+            <li class="comparison-tab-li is-hidden"><button class="module-tab-btn" data-category="comparison" type="button">Comparison</button></li>
           </ul>
         </div>
 
-        <div class="audio-module">
+        <div class="audio-module" id="main-audio-module">
           <div class="module-header">
             <h2 id="active-module-title" class="title is-3 module-title">Mix Audio</h2>
             <div class="buttons has-addons lang-switch" role="tablist" aria-label="Language switch">
@@ -267,6 +276,14 @@
             </div>
           </div>
           <div id="list-active" class="audio-list"></div>
+        </div>
+
+        <div class="audio-module is-hidden" id="comparison-module">
+          <div class="module-header">
+            <h2 class="title is-3 module-title">Embedding Comparison</h2>
+          </div>
+          <p class="comparison-description">Comparing audio generation results between <strong>Unified Semantic-Acoustic Embeddings (DSTK)</strong> and <strong>Acoustic Embeddings (VAE)</strong>, both with T5 text encoder.</p>
+          <div id="comparison-list" class="audio-list"></div>
         </div>
       </div>
     </section>

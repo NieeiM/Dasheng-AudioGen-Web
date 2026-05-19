@@ -2,9 +2,11 @@ window.HELP_IMPROVE_VIDEOJS = false;
 
 const APP_CONFIG = {
     debugMode: false,
+    showComparison: true,
     defaultLanguage: 'en',
     storageKey: 'dashengAudioGenAnnotations.v2',
-    selectionManifestPath: './data/selected_cases.json'
+    selectionManifestPath: './data/selected_cases.json',
+    comparisonCaptionPath: './data/dstk-vae/merge_caption_probe.jsonl'
 };
 
 const CATEGORIES = ['mix', 'speech', 'music', 'sound'];
@@ -19,7 +21,9 @@ const TOKEN_CLASSES = {
 
 const APP_STATE = {
     debugMode: false,
+    showComparison: false,
     items: [],
+    comparisonItems: [],
     activeCategory: 'mix',
     langByCategory: {
         mix: APP_CONFIG.defaultLanguage,
@@ -34,7 +38,8 @@ const MODULE_META = {
     mix: { title: 'Mix Audio' },
     speech: { title: 'Clean Speech' },
     music: { title: 'Music' },
-    sound: { title: 'Sound Effect' }
+    sound: { title: 'Sound Effect' },
+    comparison: { title: 'Embedding Comparison' }
 };
 
 function scrollToTop() {
@@ -57,6 +62,14 @@ function resolveDebugMode() {
         return params.get('debug') === '1';
     }
     return APP_CONFIG.debugMode;
+}
+
+function resolveShowComparison() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('comparison')) {
+        return params.get('comparison') === '1';
+    }
+    return APP_CONFIG.showComparison;
 }
 
 function escapeHtml(text) {
@@ -308,6 +321,11 @@ function syncActiveModuleHeader() {
             li.classList.toggle('is-active', active);
         }
     });
+
+    const langSwitch = document.querySelector('.lang-switch');
+    if (langSwitch) {
+        langSwitch.classList.toggle('is-hidden', APP_STATE.activeCategory === 'comparison');
+    }
 }
 
 function renderActiveModule() {
@@ -357,7 +375,15 @@ function bindModuleTabs() {
     document.querySelectorAll('.module-tab-btn').forEach(button => {
         button.addEventListener('click', function () {
             APP_STATE.activeCategory = this.dataset.category;
-            renderAll();
+            syncActiveModuleHeader();
+            syncLanguageButtons();
+
+            if (this.dataset.category === 'comparison') {
+                switchToComparison(true);
+            } else {
+                switchToComparison(false);
+                renderActiveModule();
+            }
         });
     });
 }
@@ -491,11 +517,86 @@ function hideLoading() {
     }
 }
 
+async function loadComparisonData() {
+    try {
+        const response = await fetch(APP_CONFIG.comparisonCaptionPath);
+        if (!response.ok) {
+            throw new Error(`Cannot load comparison data: ${response.status}`);
+        }
+        const text = await response.text();
+        return parseJsonl(text);
+    } catch (error) {
+        console.warn('Comparison data not loaded:', error);
+        return [];
+    }
+}
+
+function createComparisonRow(item) {
+    const row = document.createElement('article');
+    row.className = 'audio-row box comparison-row';
+
+    row.innerHTML = `
+        <div class="cell cell-short">
+            <div class="caption-hint">short caption</div>
+            <div class="short-caption">${escapeHtml(item.caption_short || '')}</div>
+            <div class="short-caption-zh">${escapeHtml(item.caption_short_zh || '')}</div>
+        </div>
+        <div class="cell cell-structured">
+            <div class="caption-hint">structured caption</div>
+            <div class="structured-caption-text">${highlightStructuredCaption(item.caption)}</div>
+        </div>
+        <div class="cell cell-audio comparison-audio-cell">
+            <div class="comparison-audio-pair">
+                <div class="comparison-audio-item">
+                    <span class="comparison-label dstk-label">unified embeds</span>
+                    <audio controls preload="metadata" src="./data/dstk-vae/dstk+T5/${encodeURIComponent(item.audio_id)}.wav"></audio>
+                </div>
+                <div class="comparison-audio-item">
+                    <span class="comparison-label vae-label">acoustic embeds</span>
+                    <audio controls preload="metadata" src="./data/dstk-vae/vae+T5/${encodeURIComponent(item.audio_id)}.wav"></audio>
+                </div>
+            </div>
+        </div>
+    `;
+
+    return row;
+}
+
+function renderComparison() {
+    const list = document.getElementById('comparison-list');
+    if (!list) return;
+    list.innerHTML = '';
+
+    APP_STATE.comparisonItems.forEach(item => {
+        list.appendChild(createComparisonRow(item));
+    });
+}
+
+function switchToComparison(isComparison) {
+    const mainModule = document.getElementById('main-audio-module');
+    const compModule = document.getElementById('comparison-module');
+    if (!mainModule || !compModule) return;
+
+    if (isComparison) {
+        mainModule.classList.add('is-hidden');
+        compModule.classList.remove('is-hidden');
+        renderComparison();
+    } else {
+        mainModule.classList.remove('is-hidden');
+        compModule.classList.add('is-hidden');
+    }
+}
+
 async function bootstrap() {
     localStorage.removeItem('dashengAudioGenAnnotations.v1');
 
     APP_STATE.debugMode = resolveDebugMode();
+    APP_STATE.showComparison = resolveShowComparison();
     const localAnnotations = getStorage();
+
+    if (APP_STATE.showComparison) {
+        document.querySelectorAll('.comparison-tab-li').forEach(el => el.classList.remove('is-hidden'));
+    }
 
     bindLanguageSwitch();
     bindModuleTabs();
@@ -504,6 +605,10 @@ async function bootstrap() {
 
     try {
         APP_STATE.items = await loadAudioData();
+
+        if (APP_STATE.showComparison) {
+            APP_STATE.comparisonItems = await loadComparisonData();
+        }
 
         const manifestAnnotations = await loadSelectionManifest();
         const hasLocal = hasAnySelection(localAnnotations);

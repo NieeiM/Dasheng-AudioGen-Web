@@ -1102,6 +1102,74 @@ a:focus {
 }
 
 
+/* Comparison Module Styles */
+.comparison-description {
+  color: var(--text-secondary);
+  margin: -0.5rem 0 1.5rem;
+  line-height: 1.7;
+}
+
+.comparison-row {
+  grid-template-columns: minmax(200px, 1fr) minmax(360px, 2fr) minmax(260px, 1fr);
+}
+
+.comparison-audio-cell {
+  align-self: center;
+}
+
+.comparison-audio-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.comparison-audio-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.comparison-audio-item audio {
+  width: 100%;
+}
+
+.comparison-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.dstk-label {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.vae-label {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.short-caption-zh {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 1180px) {
+  .comparison-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "short"
+      "structured"
+      "audio";
+  }
+}
+
 /* Music Comparison Table Styles */
 .music-comparison-table {
   border-radius: var(--border-radius);

@@ -58,7 +58,7 @@
   
   
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=libritts-comparison-1">
   
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -78,7 +78,7 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/audio_captions_fallback.js"></script>
-  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/index.js?v=libritts-comparison-1"></script>
   
   <script type="application/ld+json">
   {
@@ -280,11 +280,29 @@
         </div>
 
         <div class="audio-module is-hidden" id="comparison-module">
-          <div class="module-header">
-            <h2 class="title is-3 module-title">Embedding Comparison</h2>
+          <nav class="comparison-toc" aria-label="Comparison section navigation">
+            <p class="comparison-toc-title"><span aria-hidden="true"></span>Navigate</p>
+            <a class="is-active" href="#comparison-mecat" aria-current="location">
+              <span class="comparison-toc-index">01</span>
+              <span class="comparison-toc-label">MECAT</span>
+            </a>
+            <a href="#comparison-libritts">
+              <span class="comparison-toc-index">02</span>
+              <span class="comparison-toc-label">LibriTTS</span>
+            </a>
+          </nav>
+
+          <div id="comparison-mecat" class="module-header comparison-section-anchor">
+            <h2 class="title is-3 module-title">Embedding Comparison On Mecat</h2>
           </div>
-          <p class="comparison-description">Comparing audio generation results between <strong>Unified Semantic-Acoustic Embeddings (DashengTokenizer)</strong> and <strong>Acoustic Embeddings (VAE)</strong>, both trained with ACAVCaps and T5 text encoder.</p>
+          <p class="comparison-description">Comparing audio generation results between <strong>Unified Semantic-Acoustic Embeddings (DashengTokenizer)</strong> and <strong>Acoustic Embeddings (VAE)</strong>, both trained on <strong>ACAVCaps</strong>.</p>
           <div id="comparison-list" class="audio-list"></div>
+
+          <div id="comparison-libritts" class="module-header comparison-section-header comparison-section-anchor">
+            <h2 class="title is-3 module-title">Embedding Comparison On Libritts</h2>
+          </div>
+          <p class="comparison-description">Comparing audio generation results between <strong>Unified Semantic-Acoustic Embeddings (DashengTokenizer)</strong> and <strong>Acoustic Embeddings (VAE)</strong>, both trained on <strong>LibriTTS</strong>. All samples were randomly selected without cherry-picking.</p>
+          <div id="libritts-comparison-list" class="audio-list"></div>
         </div>
       </div>
     </section>

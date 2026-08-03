@@ -6,7 +6,8 @@ const APP_CONFIG = {
     defaultLanguage: 'en',
     storageKey: 'dashengAudioGenAnnotations.v2',
     selectionManifestPath: './data/selected_cases.json',
-    comparisonCaptionPath: './data/dstk-vae/merge_caption_probe.jsonl'
+    comparisonCaptionPath: './data/dstk-vae/merge_caption_probe.jsonl',
+    librittsComparisonManifestPath: './data/libritts-embedding-comparison/manifest.json'
 };
 
 const CATEGORIES = ['mix', 'speech', 'music', 'sound'];
@@ -24,6 +25,7 @@ const APP_STATE = {
     showComparison: false,
     items: [],
     comparisonItems: [],
+    librittsComparisonItems: [],
     activeCategory: 'mix',
     langByCategory: {
         mix: APP_CONFIG.defaultLanguage,
@@ -39,7 +41,7 @@ const MODULE_META = {
     speech: { title: 'Clean Speech' },
     music: { title: 'Music' },
     sound: { title: 'Sound Effect' },
-    comparison: { title: 'Embedding Comparison' }
+    comparison: { title: 'Embedding Comparison On Mecat' }
 };
 
 function scrollToTop() {
@@ -388,6 +390,38 @@ function bindModuleTabs() {
     });
 }
 
+function updateComparisonToc() {
+    const links = [...document.querySelectorAll('.comparison-toc a')];
+    if (links.length === 0) return;
+
+    const viewportMarker = window.innerHeight * 0.35;
+    let activeId = links[0].getAttribute('href').slice(1);
+
+    links.forEach(link => {
+        const sectionId = link.getAttribute('href').slice(1);
+        const section = document.getElementById(sectionId);
+        if (section && section.getBoundingClientRect().top <= viewportMarker) {
+            activeId = sectionId;
+        }
+    });
+
+    links.forEach(link => {
+        const isActive = link.getAttribute('href') === `#${activeId}`;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'location');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+}
+
+function bindComparisonToc() {
+    window.addEventListener('scroll', updateComparisonToc, { passive: true });
+    window.addEventListener('resize', updateComparisonToc);
+    updateComparisonToc();
+}
+
 function moveIdBefore(order, draggedId, targetId) {
     const next = order.filter(id => id !== draggedId);
     const targetIndex = next.indexOf(targetId);
@@ -531,6 +565,20 @@ async function loadComparisonData() {
     }
 }
 
+async function loadLibrittsComparisonData() {
+    try {
+        const response = await fetch(APP_CONFIG.librittsComparisonManifestPath, { cache: 'no-cache' });
+        if (!response.ok) {
+            throw new Error(`Cannot load LibriTTS comparison data: ${response.status}`);
+        }
+        const manifest = await response.json();
+        return Array.isArray(manifest.items) ? manifest.items : [];
+    } catch (error) {
+        console.warn('LibriTTS comparison data not loaded:', error);
+        return [];
+    }
+}
+
 function createComparisonRow(item) {
     const row = document.createElement('article');
     row.className = 'audio-row box comparison-row';
@@ -562,6 +610,36 @@ function createComparisonRow(item) {
     return row;
 }
 
+function createLibrittsComparisonRow(item) {
+    const row = document.createElement('article');
+    row.className = 'audio-row box comparison-row libritts-comparison-row';
+
+    row.innerHTML = `
+        <div class="cell cell-short">
+            <div class="caption-hint">LibriTTS Audio ID</div>
+            <div class="libritts-audio-id">${escapeHtml(item.audio_id)}</div>
+        </div>
+        <div class="cell cell-structured">
+            <div class="caption-hint">transcript</div>
+            <div class="structured-caption-text">${escapeHtml(item.transcript)}</div>
+        </div>
+        <div class="cell cell-audio comparison-audio-cell">
+            <div class="comparison-audio-pair">
+                <div class="comparison-audio-item">
+                    <span class="comparison-label dstk-label">unified embeds</span>
+                    <audio controls preload="metadata" src="./data/libritts-embedding-comparison/unified/${encodeURIComponent(item.audio_id)}.wav"></audio>
+                </div>
+                <div class="comparison-audio-item">
+                    <span class="comparison-label vae-label">acoustic embeds</span>
+                    <audio controls preload="metadata" src="./data/libritts-embedding-comparison/acoustic/${encodeURIComponent(item.audio_id)}.wav"></audio>
+                </div>
+            </div>
+        </div>
+    `;
+
+    return row;
+}
+
 function renderComparison() {
     const list = document.getElementById('comparison-list');
     if (!list) return;
@@ -569,6 +647,18 @@ function renderComparison() {
 
     APP_STATE.comparisonItems.forEach(item => {
         list.appendChild(createComparisonRow(item));
+    });
+
+    renderLibrittsComparison();
+}
+
+function renderLibrittsComparison() {
+    const list = document.getElementById('libritts-comparison-list');
+    if (!list) return;
+    list.innerHTML = '';
+
+    APP_STATE.librittsComparisonItems.forEach(item => {
+        list.appendChild(createLibrittsComparisonRow(item));
     });
 }
 
@@ -581,6 +671,7 @@ function switchToComparison(isComparison) {
         mainModule.classList.add('is-hidden');
         compModule.classList.remove('is-hidden');
         renderComparison();
+        requestAnimationFrame(updateComparisonToc);
     } else {
         mainModule.classList.remove('is-hidden');
         compModule.classList.add('is-hidden');
@@ -600,6 +691,7 @@ async function bootstrap() {
 
     bindLanguageSwitch();
     bindModuleTabs();
+    bindComparisonToc();
     updateModeBanner();
     bindSelectionTools();
 
@@ -607,7 +699,10 @@ async function bootstrap() {
         APP_STATE.items = await loadAudioData();
 
         if (APP_STATE.showComparison) {
-            APP_STATE.comparisonItems = await loadComparisonData();
+            [APP_STATE.comparisonItems, APP_STATE.librittsComparisonItems] = await Promise.all([
+                loadComparisonData(),
+                loadLibrittsComparisonData()
+            ]);
         }
 
         const manifestAnnotations = await loadSelectionManifest();

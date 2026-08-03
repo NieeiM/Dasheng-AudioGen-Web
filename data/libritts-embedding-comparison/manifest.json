@@ -1,0 +1,270 @@
+{
+  "selection_seed": 2504904452402462642,
+  "selection_method": "Randomly sampled 20 eligible speakers and one paired audio ID per speaker, then removed one requested audio ID; 19 items remain.",
+  "criteria": {
+    "pair_exists_in": [
+      "data-tts/acoustic",
+      "data-tts/unified"
+    ],
+    "duration_source": "LibriTTS test-clean original WAV",
+    "duration_seconds": {
+      "greater_than": 5.0,
+      "less_than": 10.0
+    },
+    "unique_speaker_id": true,
+    "speaker_id_rule": "Prefix before the first underscore in audio_id",
+    "transcript_type": "LibriTTS normalized transcript"
+  },
+  "items": [
+    {
+      "index": 1,
+      "audio_id": "237_134500_000023_000000",
+      "speaker_id": "237",
+      "original_duration_seconds": 5.61,
+      "transcript": "\"Who, Alexandra?\" Emil laughed and thrust his hands into his trousers pockets.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/237_134500_000023_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/237_134500_000023_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/237_134500_000023_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/237/134500/237_134500_000023_000000.wav"
+      }
+    },
+    {
+      "index": 2,
+      "audio_id": "3729_6852_000003_000001",
+      "speaker_id": "3729",
+      "original_duration_seconds": 7.72,
+      "transcript": "Baletti's father, who had just recovered from a long illness, was not with us, but we had his father's sister, who was older than Mario.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/3729_6852_000003_000001.wav",
+        "unified": "data/libritts-embedding-comparison/unified/3729_6852_000003_000001.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/3729_6852_000003_000001.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/3729/6852/3729_6852_000003_000001.wav"
+      }
+    },
+    {
+      "index": 3,
+      "audio_id": "8455_210777_000050_000001",
+      "speaker_id": "8455",
+      "original_duration_seconds": 5.710083,
+      "transcript": "Now, at the close of the twentieth century, could oppression be carried to such a height as this?",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/8455_210777_000050_000001.wav",
+        "unified": "data/libritts-embedding-comparison/unified/8455_210777_000050_000001.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/8455_210777_000050_000001.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/8455/210777/8455_210777_000050_000001.wav"
+      }
+    },
+    {
+      "index": 4,
+      "audio_id": "5142_36377_000016_000001",
+      "speaker_id": "5142",
+      "original_duration_seconds": 7.05,
+      "transcript": "He looked up at Naomi doubtingly from his plate, and looked down again slowly with a frown. When I addressed him, he answered constrainedly.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/5142_36377_000016_000001.wav",
+        "unified": "data/libritts-embedding-comparison/unified/5142_36377_000016_000001.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/5142_36377_000016_000001.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/5142/36377/5142_36377_000016_000001.wav"
+      }
+    },
+    {
+      "index": 5,
+      "audio_id": "8555_284449_000028_000001",
+      "speaker_id": "8555",
+      "original_duration_seconds": 5.47,
+      "transcript": "Then she gave Rosalie back her magic ring, thanking the kind Witch for all she had done for them.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/8555_284449_000028_000001.wav",
+        "unified": "data/libritts-embedding-comparison/unified/8555_284449_000028_000001.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/8555_284449_000028_000001.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/8555/284449/8555_284449_000028_000001.wav"
+      }
+    },
+    {
+      "index": 6,
+      "audio_id": "8224_274384_000017_000001",
+      "speaker_id": "8224",
+      "original_duration_seconds": 7.04,
+      "transcript": "They were such as a captive, entirely at mercy, could expect from the most inexorable victor.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/8224_274384_000017_000001.wav",
+        "unified": "data/libritts-embedding-comparison/unified/8224_274384_000017_000001.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/8224_274384_000017_000001.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/8224/274384/8224_274384_000017_000001.wav"
+      }
+    },
+    {
+      "index": 7,
+      "audio_id": "1284_1181_000013_000000",
+      "speaker_id": "1284",
+      "original_duration_seconds": 8.74,
+      "transcript": "\"He means,\" explained Ojo, \"that unless your servant has good brains she won't know how to obey you properly, nor do the things you ask her to do.\"",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/1284_1181_000013_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/1284_1181_000013_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/1284_1181_000013_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/1284/1181/1284_1181_000013_000000.wav"
+      }
+    },
+    {
+      "index": 8,
+      "audio_id": "1188_133604_000012_000003",
+      "speaker_id": "1188",
+      "original_duration_seconds": 9.76,
+      "transcript": "Some of the touches, indeed, when the tint has been mixed with much water, have been laid in little drops or ponds, so that the pigment might crystallize hard at the edge.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/1188_133604_000012_000003.wav",
+        "unified": "data/libritts-embedding-comparison/unified/1188_133604_000012_000003.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/1188_133604_000012_000003.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/1188/133604/1188_133604_000012_000003.wav"
+      }
+    },
+    {
+      "index": 9,
+      "audio_id": "4992_41806_000027_000000",
+      "speaker_id": "4992",
+      "original_duration_seconds": 7.69,
+      "transcript": "The guests naturally had no associations with the Carey Curse, and the Careys themselves were dumb with amazement and despair.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/4992_41806_000027_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/4992_41806_000027_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/4992_41806_000027_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/4992/41806/4992_41806_000027_000000.wav"
+      }
+    },
+    {
+      "index": 10,
+      "audio_id": "2961_961_000025_000003",
+      "speaker_id": "2961",
+      "original_duration_seconds": 7.810042,
+      "transcript": "They first contrived the eyes, into which they conveyed a light akin to the light of day, making it flow through the pupils.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/2961_961_000025_000003.wav",
+        "unified": "data/libritts-embedding-comparison/unified/2961_961_000025_000003.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/2961_961_000025_000003.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/2961/961/2961_961_000025_000003.wav"
+      }
+    },
+    {
+      "index": 11,
+      "audio_id": "5683_32879_000029_000003",
+      "speaker_id": "5683",
+      "original_duration_seconds": 6.52,
+      "transcript": "If he does not return in a day or two, Chelford, I am sure, will speak to me, and then I shall tell him my resolution.'",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/5683_32879_000029_000003.wav",
+        "unified": "data/libritts-embedding-comparison/unified/5683_32879_000029_000003.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/5683_32879_000029_000003.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/5683/32879/5683_32879_000029_000003.wav"
+      }
+    },
+    {
+      "index": 12,
+      "audio_id": "4077_13754_000002_000000",
+      "speaker_id": "4077",
+      "original_duration_seconds": 9.63,
+      "transcript": "The troops, once in Utah, had to be provisioned; and everything the settlers could spare was eagerly bought at an unusual price. The gold changed hands.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/4077_13754_000002_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/4077_13754_000002_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/4077_13754_000002_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/4077/13754/4077_13754_000002_000000.wav"
+      }
+    },
+    {
+      "index": 13,
+      "audio_id": "1089_134691_000045_000005",
+      "speaker_id": "1089",
+      "original_duration_seconds": 7.289917,
+      "transcript": "Her bosom was as a bird's, soft and slight, slight and soft as the breast of some dark plumaged dove.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/1089_134691_000045_000005.wav",
+        "unified": "data/libritts-embedding-comparison/unified/1089_134691_000045_000005.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/1089_134691_000045_000005.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/1089/134691/1089_134691_000045_000005.wav"
+      }
+    },
+    {
+      "index": 14,
+      "audio_id": "6829_68769_000098_000000",
+      "speaker_id": "6829",
+      "original_duration_seconds": 6.030042,
+      "transcript": "\"Of all the easy marks I ever encountered,\" muttered mr Marshall, \"this young Forbes is the easiest.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/6829_68769_000098_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/6829_68769_000098_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/6829_68769_000098_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/6829/68769/6829_68769_000098_000000.wav"
+      }
+    },
+    {
+      "index": 15,
+      "audio_id": "5105_28240_000031_000000",
+      "speaker_id": "5105",
+      "original_duration_seconds": 6.030042,
+      "transcript": "\"I am not sure,\" said he, \"but what the tour of the Mediterranean will prove to be the tour of the world.\"",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/5105_28240_000031_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/5105_28240_000031_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/5105_28240_000031_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/5105/28240/5105_28240_000031_000000.wav"
+      }
+    },
+    {
+      "index": 16,
+      "audio_id": "2300_131720_000004_000000",
+      "speaker_id": "2300",
+      "original_duration_seconds": 9.73,
+      "transcript": "Edison was from the first deeply impressed with the possibilities of water power, and, as this incident shows, was prompt to seize such a very early opportunity.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/2300_131720_000004_000000.wav",
+        "unified": "data/libritts-embedding-comparison/unified/2300_131720_000004_000000.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/2300_131720_000004_000000.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/2300/131720/2300_131720_000004_000000.wav"
+      }
+    },
+    {
+      "index": 17,
+      "audio_id": "7176_92135_000070_000002",
+      "speaker_id": "7176",
+      "original_duration_seconds": 5.480042,
+      "transcript": "Let your actors have tea by all means, but see that it is a properly histrionic tea.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/7176_92135_000070_000002.wav",
+        "unified": "data/libritts-embedding-comparison/unified/7176_92135_000070_000002.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/7176_92135_000070_000002.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/7176/92135/7176_92135_000070_000002.wav"
+      }
+    },
+    {
+      "index": 18,
+      "audio_id": "3575_170457_000012_000003",
+      "speaker_id": "3575",
+      "original_duration_seconds": 7.08,
+      "transcript": "He spoke French perfectly, I have been told, when need was; but delighted usually in talking the broadest Yorkshire.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/3575_170457_000012_000003.wav",
+        "unified": "data/libritts-embedding-comparison/unified/3575_170457_000012_000003.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/3575_170457_000012_000003.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/3575/170457/3575_170457_000012_000003.wav"
+      }
+    },
+    {
+      "index": 19,
+      "audio_id": "6930_76324_000002_000004",
+      "speaker_id": "6930",
+      "original_duration_seconds": 6.93,
+      "transcript": "These two cherubic infants had both big brown eyes, fat red cheeks, and adorable, fluffy golden curls.",
+      "files": {
+        "acoustic": "data/libritts-embedding-comparison/acoustic/6930_76324_000002_000004.wav",
+        "unified": "data/libritts-embedding-comparison/unified/6930_76324_000002_000004.wav",
+        "transcript": "data/libritts-embedding-comparison/transcripts/6930_76324_000002_000004.normalized.txt",
+        "original_audio_source": "data-tts/LibriTTS/test-clean/6930/76324/6930_76324_000002_000004.wav"
+      }
+    }
+  ],
+  "removed_audio_ids": [
+    "121_127105_000008_000000"
+  ]
+}
